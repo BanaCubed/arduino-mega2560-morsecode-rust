@@ -1,12 +1,12 @@
 [package]
-name = "mc-r-ard"
+name = "arduino-mega2560-morsecode-rust"
 version = "0.1.0"
 authors = ["Rin <162780442+BanaCubed@users.noreply.github.com>"]
 edition = "2021"
 license = "MIT OR Apache-2.0"
 
 [[bin]]
-name = "mc-r-ard"
+name = "arduino-mega2560-morsecode-rust"
 test = false
 bench = false
 

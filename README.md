@@ -1,4 +1,4 @@
-mc-r-ard
+arduino-mega2560-morsecode-rust
 ========
 
 Rust project for the _Arduino Mega 2560_.

@@ -1,4 +1,4 @@
 [wokwi]
 version = 1
-firmware = 'target\avr-none\debug\mc-r-ard.elf'
-elf = 'target\avr-none\debug\mc-r-ard.elf'
+firmware = 'target\avr-none\debug\arduino-mega2560-morsecode-rust.elf'
+elf = 'target\avr-none\debug\arduino-mega2560-morsecode-rust.elf'
