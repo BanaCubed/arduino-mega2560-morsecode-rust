@@ -2,18 +2,38 @@
 #![no_main]
 
 use panic_halt as _;
+use arduino_hal as hal;
+use lcd_lcm1602_i2c::sync_lcd::Lcd;
 
-#[arduino_hal::entry]
+// Generally speaking this address will vary with the individual LCD display.
+// This makes it really annoying to manage in version control.
+const LCD_ADDRESS: u8 = 0x27;
+
+#[hal::entry]
 fn main() -> ! {
-    let dp: arduino_hal::Peripherals = arduino_hal::Peripherals::take().unwrap();
-    let pins = arduino_hal::pins!(dp);
-    let serial = arduino_hal::default_serial!(dp, pins, 57600);
+    // Boilerplate
+    let dp: hal::Peripherals = hal::Peripherals::take().unwrap();
+    let pins = hal::pins!(dp);
+    let mut i2c = hal::I2c::new(
+        dp.TWI,
+        pins.d20.into_pull_up_input(),
+        pins.d21.into_pull_up_input(),
+        50000,
+    );
+    let mut delay = hal::Delay::new();
 
-    let mut adc = arduino_hal::Adc::new(dp.ADC, Default::default());
+    let mut lcd = Lcd::new(&mut i2c, &mut delay)
+        .with_address(LCD_ADDRESS)
+        .with_cursor_on(true)
+        .with_rows(2)
+        .init().unwrap();
 
-    let input_pin = pins.a0.into_analog_input(&mut adc);
+    let _ = lcd.clear();
+    let _ = lcd.return_home();
+
+    let _ = lcd.write_str("a");
 
     loop {
-        arduino_hal::delay_ms(150);
+        let _ = lcd.write_str("a");
     }
 }
