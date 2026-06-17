@@ -2,23 +2,20 @@
 #![no_main]
 
 use panic_halt as _;
-use arduino_hal as hal;
+use arduino_hal::{self as hal};
 use lcd_lcm1602_i2c::sync_lcd::Lcd;
 
-// Generally speaking this address will vary with the individual LCD display.
-// This makes it really annoying to manage in version control.
 const LCD_ADDRESS: u8 = 0x27;
 
 #[hal::entry]
 fn main() -> ! {
-    // Boilerplate
     let dp: hal::Peripherals = hal::Peripherals::take().unwrap();
     let pins = hal::pins!(dp);
     let mut i2c = hal::I2c::new(
         dp.TWI,
         pins.d20.into_pull_up_input(),
         pins.d21.into_pull_up_input(),
-        50000,
+        10000,
     );
     let mut delay = hal::Delay::new();
 
@@ -28,12 +25,16 @@ fn main() -> ! {
         .with_rows(2)
         .init().unwrap();
 
+    hal::delay_ms(500);
+    
     let _ = lcd.clear();
     let _ = lcd.return_home();
+    
+    hal::delay_ms(100);
 
-    let _ = lcd.write_str("a");
+    let _ = lcd.write_str("Hello");
 
     loop {
-        let _ = lcd.write_str("a");
+        hal::delay_ms(1000);
     }
 }
