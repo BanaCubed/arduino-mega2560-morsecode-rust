@@ -38,8 +38,10 @@ fn main() -> ! {
             // Skips to next iteration, since nothing needs to be done.
             continue;
         }
+
         let morse_char = get_morse_char(time_since_change);
         last_input = input_active;
+        time_since_change = 0;
     }
 }
 
