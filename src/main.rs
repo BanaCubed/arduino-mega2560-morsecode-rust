@@ -1,6 +1,8 @@
 #![no_std]
 #![no_main]
 
+mod translation;
+
 use arduino_hal::{self as hal};
 use panic_halt as _;
 
