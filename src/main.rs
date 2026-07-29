@@ -27,10 +27,10 @@ fn main() -> ! {
     let mut time_since_change: u16 = 0;
     let mut last_input = false;
 
-    // Stores up to 16 morse code characters.
+    // Stores up to 8 morse code characters.
     // Gets cleared when a valid character is inputted or the length goes past the maximum.
-    // In practice 16 slots is more than enough.
-    let mut chars: [Option<MorseCharacters>; 16] = Default::default();
+    // In practice 8 slots is more than enough.
+    let mut chars: [Option<MorseCharacters>; 8] = Default::default();
 
     loop {
         let input_active = adc.read_blocking(&input_pin) <= 10;

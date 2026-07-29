@@ -7,18 +7,10 @@ use crate::MorseCharacters;
 /// ([chars], 'a')
 ///
 /// .- = 'a'
-pub const LETTER_A: ([Option<MorseCharacters>; 16], char) = (
+pub const LETTER_A: ([Option<MorseCharacters>; 8], char) = (
     [
         Some(MorseCharacters::Dot),
         Some(MorseCharacters::Dash),
-        None,
-        None,
-        None,
-        None,
-        None,
-        None,
-        None,
-        None,
         None,
         None,
         None,
@@ -33,20 +25,12 @@ pub const LETTER_A: ([Option<MorseCharacters>; 16], char) = (
 /// ([chars], 'b')
 ///
 /// -... = 'b'
-pub const LETTER_B: ([Option<MorseCharacters>; 16], char) = (
+pub const LETTER_B: ([Option<MorseCharacters>; 8], char) = (
     [
         Some(MorseCharacters::Dash),
         Some(MorseCharacters::Dot),
         Some(MorseCharacters::Dot),
         Some(MorseCharacters::Dot),
-        None,
-        None,
-        None,
-        None,
-        None,
-        None,
-        None,
-        None,
         None,
         None,
         None,
@@ -59,20 +43,12 @@ pub const LETTER_B: ([Option<MorseCharacters>; 16], char) = (
 /// ([chars], 'c')
 ///
 /// -.-. = 'c'
-pub const LETTER_C: ([Option<MorseCharacters>; 16], char) = (
+pub const LETTER_C: ([Option<MorseCharacters>; 8], char) = (
     [
         Some(MorseCharacters::Dash),
         Some(MorseCharacters::Dot),
         Some(MorseCharacters::Dash),
         Some(MorseCharacters::Dot),
-        None,
-        None,
-        None,
-        None,
-        None,
-        None,
-        None,
-        None,
         None,
         None,
         None,
@@ -85,19 +61,11 @@ pub const LETTER_C: ([Option<MorseCharacters>; 16], char) = (
 /// ([chars], 'd')
 ///
 /// -.. = 'd'
-pub const LETTER_D: ([Option<MorseCharacters>; 16], char) = (
+pub const LETTER_D: ([Option<MorseCharacters>; 8], char) = (
     [
         Some(MorseCharacters::Dash),
         Some(MorseCharacters::Dot),
         Some(MorseCharacters::Dot),
-        None,
-        None,
-        None,
-        None,
-        None,
-        None,
-        None,
-        None,
         None,
         None,
         None,
@@ -111,17 +79,9 @@ pub const LETTER_D: ([Option<MorseCharacters>; 16], char) = (
 /// ([chars], 'e')
 ///
 /// . = 'e'
-pub const LETTER_E: ([Option<MorseCharacters>; 16], char) = (
+pub const LETTER_E: ([Option<MorseCharacters>; 8], char) = (
     [
         Some(MorseCharacters::Dot),
-        None,
-        None,
-        None,
-        None,
-        None,
-        None,
-        None,
-        None,
         None,
         None,
         None,
@@ -137,20 +97,12 @@ pub const LETTER_E: ([Option<MorseCharacters>; 16], char) = (
 /// ([chars], 'f')
 ///
 /// ..-. = 'f'
-pub const LETTER_F: ([Option<MorseCharacters>; 16], char) = (
+pub const LETTER_F: ([Option<MorseCharacters>; 8], char) = (
     [
         Some(MorseCharacters::Dot),
         Some(MorseCharacters::Dot),
         Some(MorseCharacters::Dash),
         Some(MorseCharacters::Dot),
-        None,
-        None,
-        None,
-        None,
-        None,
-        None,
-        None,
-        None,
         None,
         None,
         None,
@@ -163,19 +115,11 @@ pub const LETTER_F: ([Option<MorseCharacters>; 16], char) = (
 /// ([chars], 'g')
 ///
 /// --. = 'g'
-pub const LETTER_G: ([Option<MorseCharacters>; 16], char) = (
+pub const LETTER_G: ([Option<MorseCharacters>; 8], char) = (
     [
         Some(MorseCharacters::Dash),
         Some(MorseCharacters::Dash),
         Some(MorseCharacters::Dot),
-        None,
-        None,
-        None,
-        None,
-        None,
-        None,
-        None,
-        None,
         None,
         None,
         None,
@@ -189,20 +133,12 @@ pub const LETTER_G: ([Option<MorseCharacters>; 16], char) = (
 /// ([chars], 'h')
 ///
 /// .... = 'h'
-pub const LETTER_H: ([Option<MorseCharacters>; 16], char) = (
+pub const LETTER_H: ([Option<MorseCharacters>; 8], char) = (
     [
         Some(MorseCharacters::Dot),
         Some(MorseCharacters::Dot),
         Some(MorseCharacters::Dot),
         Some(MorseCharacters::Dot),
-        None,
-        None,
-        None,
-        None,
-        None,
-        None,
-        None,
-        None,
         None,
         None,
         None,
@@ -215,18 +151,10 @@ pub const LETTER_H: ([Option<MorseCharacters>; 16], char) = (
 /// ([chars], 'i')
 ///
 /// .. = 'i'
-pub const LETTER_I: ([Option<MorseCharacters>; 16], char) = (
+pub const LETTER_I: ([Option<MorseCharacters>; 8], char) = (
     [
         Some(MorseCharacters::Dot),
         Some(MorseCharacters::Dot),
-        None,
-        None,
-        None,
-        None,
-        None,
-        None,
-        None,
-        None,
         None,
         None,
         None,
@@ -241,20 +169,12 @@ pub const LETTER_I: ([Option<MorseCharacters>; 16], char) = (
 /// ([chars], 'j')
 ///
 /// .--- = 'j'
-pub const LETTER_J: ([Option<MorseCharacters>; 16], char) = (
+pub const LETTER_J: ([Option<MorseCharacters>; 8], char) = (
     [
         Some(MorseCharacters::Dot),
         Some(MorseCharacters::Dash),
         Some(MorseCharacters::Dash),
         Some(MorseCharacters::Dash),
-        None,
-        None,
-        None,
-        None,
-        None,
-        None,
-        None,
-        None,
         None,
         None,
         None,
@@ -267,19 +187,11 @@ pub const LETTER_J: ([Option<MorseCharacters>; 16], char) = (
 /// ([chars], 'k')
 ///
 /// -.- = 'k'
-pub const LETTER_K: ([Option<MorseCharacters>; 16], char) = (
+pub const LETTER_K: ([Option<MorseCharacters>; 8], char) = (
     [
         Some(MorseCharacters::Dash),
         Some(MorseCharacters::Dot),
         Some(MorseCharacters::Dash),
-        None,
-        None,
-        None,
-        None,
-        None,
-        None,
-        None,
-        None,
         None,
         None,
         None,
@@ -293,20 +205,12 @@ pub const LETTER_K: ([Option<MorseCharacters>; 16], char) = (
 /// ([chars], 'l')
 ///
 /// .-.. = 'l'
-pub const LETTER_L: ([Option<MorseCharacters>; 16], char) = (
+pub const LETTER_L: ([Option<MorseCharacters>; 8], char) = (
     [
         Some(MorseCharacters::Dot),
         Some(MorseCharacters::Dash),
         Some(MorseCharacters::Dot),
         Some(MorseCharacters::Dot),
-        None,
-        None,
-        None,
-        None,
-        None,
-        None,
-        None,
-        None,
         None,
         None,
         None,
@@ -319,18 +223,10 @@ pub const LETTER_L: ([Option<MorseCharacters>; 16], char) = (
 /// ([chars], 'm')
 ///
 /// -- = 'm'
-pub const LETTER_M: ([Option<MorseCharacters>; 16], char) = (
+pub const LETTER_M: ([Option<MorseCharacters>; 8], char) = (
     [
         Some(MorseCharacters::Dash),
         Some(MorseCharacters::Dash),
-        None,
-        None,
-        None,
-        None,
-        None,
-        None,
-        None,
-        None,
         None,
         None,
         None,
@@ -345,18 +241,10 @@ pub const LETTER_M: ([Option<MorseCharacters>; 16], char) = (
 /// ([chars], 'n')
 ///
 /// -. = 'n'
-pub const LETTER_N: ([Option<MorseCharacters>; 16], char) = (
+pub const LETTER_N: ([Option<MorseCharacters>; 8], char) = (
     [
         Some(MorseCharacters::Dash),
         Some(MorseCharacters::Dot),
-        None,
-        None,
-        None,
-        None,
-        None,
-        None,
-        None,
-        None,
         None,
         None,
         None,
@@ -371,19 +259,11 @@ pub const LETTER_N: ([Option<MorseCharacters>; 16], char) = (
 /// ([chars], 'o')
 ///
 /// --- = 'o'
-pub const LETTER_O: ([Option<MorseCharacters>; 16], char) = (
+pub const LETTER_O: ([Option<MorseCharacters>; 8], char) = (
     [
         Some(MorseCharacters::Dash),
         Some(MorseCharacters::Dash),
         Some(MorseCharacters::Dash),
-        None,
-        None,
-        None,
-        None,
-        None,
-        None,
-        None,
-        None,
         None,
         None,
         None,
@@ -397,20 +277,12 @@ pub const LETTER_O: ([Option<MorseCharacters>; 16], char) = (
 /// ([chars], 'p')
 ///
 /// .--. = 'p'
-pub const LETTER_P: ([Option<MorseCharacters>; 16], char) = (
+pub const LETTER_P: ([Option<MorseCharacters>; 8], char) = (
     [
         Some(MorseCharacters::Dot),
         Some(MorseCharacters::Dash),
         Some(MorseCharacters::Dash),
         Some(MorseCharacters::Dot),
-        None,
-        None,
-        None,
-        None,
-        None,
-        None,
-        None,
-        None,
         None,
         None,
         None,
@@ -423,20 +295,12 @@ pub const LETTER_P: ([Option<MorseCharacters>; 16], char) = (
 /// ([chars], 'q')
 ///
 /// --.- = 'q'
-pub const LETTER_Q: ([Option<MorseCharacters>; 16], char) = (
+pub const LETTER_Q: ([Option<MorseCharacters>; 8], char) = (
     [
         Some(MorseCharacters::Dash),
         Some(MorseCharacters::Dash),
         Some(MorseCharacters::Dot),
         Some(MorseCharacters::Dash),
-        None,
-        None,
-        None,
-        None,
-        None,
-        None,
-        None,
-        None,
         None,
         None,
         None,
@@ -449,19 +313,11 @@ pub const LETTER_Q: ([Option<MorseCharacters>; 16], char) = (
 /// ([chars], 'r')
 ///
 /// .-. = 'r'
-pub const LETTER_R: ([Option<MorseCharacters>; 16], char) = (
+pub const LETTER_R: ([Option<MorseCharacters>; 8], char) = (
     [
         Some(MorseCharacters::Dot),
         Some(MorseCharacters::Dash),
         Some(MorseCharacters::Dot),
-        None,
-        None,
-        None,
-        None,
-        None,
-        None,
-        None,
-        None,
         None,
         None,
         None,
@@ -475,19 +331,11 @@ pub const LETTER_R: ([Option<MorseCharacters>; 16], char) = (
 /// ([chars], 's')
 ///
 /// ... = 's'
-pub const LETTER_S: ([Option<MorseCharacters>; 16], char) = (
+pub const LETTER_S: ([Option<MorseCharacters>; 8], char) = (
     [
         Some(MorseCharacters::Dot),
         Some(MorseCharacters::Dot),
         Some(MorseCharacters::Dot),
-        None,
-        None,
-        None,
-        None,
-        None,
-        None,
-        None,
-        None,
         None,
         None,
         None,
@@ -501,17 +349,9 @@ pub const LETTER_S: ([Option<MorseCharacters>; 16], char) = (
 /// ([chars], 't')
 ///
 /// - = 't'
-pub const LETTER_T: ([Option<MorseCharacters>; 16], char) = (
+pub const LETTER_T: ([Option<MorseCharacters>; 8], char) = (
     [
         Some(MorseCharacters::Dash),
-        None,
-        None,
-        None,
-        None,
-        None,
-        None,
-        None,
-        None,
         None,
         None,
         None,
@@ -527,19 +367,11 @@ pub const LETTER_T: ([Option<MorseCharacters>; 16], char) = (
 /// ([chars], 'u')
 ///
 /// ..- = 'u'
-pub const LETTER_U: ([Option<MorseCharacters>; 16], char) = (
+pub const LETTER_U: ([Option<MorseCharacters>; 8], char) = (
     [
         Some(MorseCharacters::Dot),
         Some(MorseCharacters::Dot),
         Some(MorseCharacters::Dash),
-        None,
-        None,
-        None,
-        None,
-        None,
-        None,
-        None,
-        None,
         None,
         None,
         None,
@@ -553,20 +385,12 @@ pub const LETTER_U: ([Option<MorseCharacters>; 16], char) = (
 /// ([chars], 'v')
 ///
 /// ...- = 'v'
-pub const LETTER_V: ([Option<MorseCharacters>; 16], char) = (
+pub const LETTER_V: ([Option<MorseCharacters>; 8], char) = (
     [
         Some(MorseCharacters::Dot),
         Some(MorseCharacters::Dot),
         Some(MorseCharacters::Dot),
         Some(MorseCharacters::Dash),
-        None,
-        None,
-        None,
-        None,
-        None,
-        None,
-        None,
-        None,
         None,
         None,
         None,
@@ -579,19 +403,11 @@ pub const LETTER_V: ([Option<MorseCharacters>; 16], char) = (
 /// ([chars], 'w')
 ///
 /// .-- = 'w'
-pub const LETTER_W: ([Option<MorseCharacters>; 16], char) = (
+pub const LETTER_W: ([Option<MorseCharacters>; 8], char) = (
     [
         Some(MorseCharacters::Dot),
         Some(MorseCharacters::Dash),
         Some(MorseCharacters::Dash),
-        None,
-        None,
-        None,
-        None,
-        None,
-        None,
-        None,
-        None,
         None,
         None,
         None,
@@ -605,20 +421,12 @@ pub const LETTER_W: ([Option<MorseCharacters>; 16], char) = (
 /// ([chars], 'x')
 ///
 /// -..- = 'x'
-pub const LETTER_X: ([Option<MorseCharacters>; 16], char) = (
+pub const LETTER_X: ([Option<MorseCharacters>; 8], char) = (
     [
         Some(MorseCharacters::Dash),
         Some(MorseCharacters::Dot),
         Some(MorseCharacters::Dot),
         Some(MorseCharacters::Dash),
-        None,
-        None,
-        None,
-        None,
-        None,
-        None,
-        None,
-        None,
         None,
         None,
         None,
@@ -631,20 +439,12 @@ pub const LETTER_X: ([Option<MorseCharacters>; 16], char) = (
 /// ([chars], 'y')
 ///
 /// -.-- = 'y'
-pub const LETTER_Y: ([Option<MorseCharacters>; 16], char) = (
+pub const LETTER_Y: ([Option<MorseCharacters>; 8], char) = (
     [
         Some(MorseCharacters::Dash),
         Some(MorseCharacters::Dot),
         Some(MorseCharacters::Dash),
         Some(MorseCharacters::Dash),
-        None,
-        None,
-        None,
-        None,
-        None,
-        None,
-        None,
-        None,
         None,
         None,
         None,
@@ -657,20 +457,12 @@ pub const LETTER_Y: ([Option<MorseCharacters>; 16], char) = (
 /// ([chars], 'z')
 ///
 /// --.. = 'z'
-pub const LETTER_Z: ([Option<MorseCharacters>; 16], char) = (
+pub const LETTER_Z: ([Option<MorseCharacters>; 8], char) = (
     [
         Some(MorseCharacters::Dash),
         Some(MorseCharacters::Dash),
         Some(MorseCharacters::Dot),
         Some(MorseCharacters::Dot),
-        None,
-        None,
-        None,
-        None,
-        None,
-        None,
-        None,
-        None,
         None,
         None,
         None,
@@ -683,21 +475,13 @@ pub const LETTER_Z: ([Option<MorseCharacters>; 16], char) = (
 /// ([chars], '0')
 ///
 /// ----- = '0'
-pub const NUMBER_0: ([Option<MorseCharacters>; 16], char) = (
+pub const NUMBER_0: ([Option<MorseCharacters>; 8], char) = (
     [
         Some(MorseCharacters::Dash),
         Some(MorseCharacters::Dash),
         Some(MorseCharacters::Dash),
         Some(MorseCharacters::Dash),
         Some(MorseCharacters::Dash),
-        None,
-        None,
-        None,
-        None,
-        None,
-        None,
-        None,
-        None,
         None,
         None,
         None,
@@ -709,21 +493,13 @@ pub const NUMBER_0: ([Option<MorseCharacters>; 16], char) = (
 /// ([chars], '1')
 ///
 /// .---- = '1'
-pub const NUMBER_1: ([Option<MorseCharacters>; 16], char) = (
+pub const NUMBER_1: ([Option<MorseCharacters>; 8], char) = (
     [
         Some(MorseCharacters::Dot),
         Some(MorseCharacters::Dash),
         Some(MorseCharacters::Dash),
         Some(MorseCharacters::Dash),
         Some(MorseCharacters::Dash),
-        None,
-        None,
-        None,
-        None,
-        None,
-        None,
-        None,
-        None,
         None,
         None,
         None,
@@ -735,21 +511,13 @@ pub const NUMBER_1: ([Option<MorseCharacters>; 16], char) = (
 /// ([chars], '2')
 ///
 /// ..--- = '2'
-pub const NUMBER_2: ([Option<MorseCharacters>; 16], char) = (
+pub const NUMBER_2: ([Option<MorseCharacters>; 8], char) = (
     [
         Some(MorseCharacters::Dot),
         Some(MorseCharacters::Dot),
         Some(MorseCharacters::Dash),
         Some(MorseCharacters::Dash),
         Some(MorseCharacters::Dash),
-        None,
-        None,
-        None,
-        None,
-        None,
-        None,
-        None,
-        None,
         None,
         None,
         None,
@@ -761,21 +529,13 @@ pub const NUMBER_2: ([Option<MorseCharacters>; 16], char) = (
 /// ([chars], '3')
 ///
 /// ...-- = '3'
-pub const NUMBER_3: ([Option<MorseCharacters>; 16], char) = (
+pub const NUMBER_3: ([Option<MorseCharacters>; 8], char) = (
     [
         Some(MorseCharacters::Dot),
         Some(MorseCharacters::Dot),
         Some(MorseCharacters::Dot),
         Some(MorseCharacters::Dash),
         Some(MorseCharacters::Dash),
-        None,
-        None,
-        None,
-        None,
-        None,
-        None,
-        None,
-        None,
         None,
         None,
         None,
@@ -787,21 +547,13 @@ pub const NUMBER_3: ([Option<MorseCharacters>; 16], char) = (
 /// ([chars], '4')
 ///
 /// ....- = '4'
-pub const NUMBER_4: ([Option<MorseCharacters>; 16], char) = (
+pub const NUMBER_4: ([Option<MorseCharacters>; 8], char) = (
     [
         Some(MorseCharacters::Dot),
         Some(MorseCharacters::Dot),
         Some(MorseCharacters::Dot),
         Some(MorseCharacters::Dot),
         Some(MorseCharacters::Dash),
-        None,
-        None,
-        None,
-        None,
-        None,
-        None,
-        None,
-        None,
         None,
         None,
         None,
@@ -813,21 +565,13 @@ pub const NUMBER_4: ([Option<MorseCharacters>; 16], char) = (
 /// ([chars], '5')
 ///
 /// ..... = '5'
-pub const NUMBER_5: ([Option<MorseCharacters>; 16], char) = (
+pub const NUMBER_5: ([Option<MorseCharacters>; 8], char) = (
     [
         Some(MorseCharacters::Dot),
         Some(MorseCharacters::Dot),
         Some(MorseCharacters::Dot),
         Some(MorseCharacters::Dot),
         Some(MorseCharacters::Dot),
-        None,
-        None,
-        None,
-        None,
-        None,
-        None,
-        None,
-        None,
         None,
         None,
         None,
@@ -839,21 +583,13 @@ pub const NUMBER_5: ([Option<MorseCharacters>; 16], char) = (
 /// ([chars], '6')
 ///
 /// -.... = '6'
-pub const NUMBER_6: ([Option<MorseCharacters>; 16], char) = (
+pub const NUMBER_6: ([Option<MorseCharacters>; 8], char) = (
     [
         Some(MorseCharacters::Dash),
         Some(MorseCharacters::Dot),
         Some(MorseCharacters::Dot),
         Some(MorseCharacters::Dot),
         Some(MorseCharacters::Dot),
-        None,
-        None,
-        None,
-        None,
-        None,
-        None,
-        None,
-        None,
         None,
         None,
         None,
@@ -865,21 +601,13 @@ pub const NUMBER_6: ([Option<MorseCharacters>; 16], char) = (
 /// ([chars], '7')
 ///
 /// --... = '7'
-pub const NUMBER_7: ([Option<MorseCharacters>; 16], char) = (
+pub const NUMBER_7: ([Option<MorseCharacters>; 8], char) = (
     [
         Some(MorseCharacters::Dash),
         Some(MorseCharacters::Dash),
         Some(MorseCharacters::Dot),
         Some(MorseCharacters::Dot),
         Some(MorseCharacters::Dot),
-        None,
-        None,
-        None,
-        None,
-        None,
-        None,
-        None,
-        None,
         None,
         None,
         None,
@@ -891,21 +619,13 @@ pub const NUMBER_7: ([Option<MorseCharacters>; 16], char) = (
 /// ([chars], '8')
 ///
 /// ---.. = '8'
-pub const NUMBER_8: ([Option<MorseCharacters>; 16], char) = (
+pub const NUMBER_8: ([Option<MorseCharacters>; 8], char) = (
     [
         Some(MorseCharacters::Dash),
         Some(MorseCharacters::Dash),
         Some(MorseCharacters::Dash),
         Some(MorseCharacters::Dot),
         Some(MorseCharacters::Dot),
-        None,
-        None,
-        None,
-        None,
-        None,
-        None,
-        None,
-        None,
         None,
         None,
         None,
@@ -917,21 +637,13 @@ pub const NUMBER_8: ([Option<MorseCharacters>; 16], char) = (
 /// ([chars], '9')
 ///
 /// ----. = '9'
-pub const NUMBER_9: ([Option<MorseCharacters>; 16], char) = (
+pub const NUMBER_9: ([Option<MorseCharacters>; 8], char) = (
     [
         Some(MorseCharacters::Dash),
         Some(MorseCharacters::Dash),
         Some(MorseCharacters::Dash),
         Some(MorseCharacters::Dash),
         Some(MorseCharacters::Dot),
-        None,
-        None,
-        None,
-        None,
-        None,
-        None,
-        None,
-        None,
         None,
         None,
         None,
