@@ -25,9 +25,13 @@ fn main() -> ! {
     let mut time_since_change: u16 = 0;
     let mut last_input = false;
 
+    // Stores up to 16 morse code characters.
+    // Gets cleared when a valid character is inputted or the length goes past the maximum.
+    // In practice 16 slots is more than enough.
+    let mut chars: [Option<MorseCharacters>; 16] = Default::default();
+
     loop {
         let input_active = adc.read_blocking(&input_pin) <= 10;
-        //let _ = ufmt::uwriteln!(&mut _serial, "{}", input_active);
         // I assume that the time to execute code is negligible, which it won't be.
         // This avoids the need to actually track time, and still should keep enough accuracy to be usable.
         hal::delay_ms(10);
@@ -39,9 +43,39 @@ fn main() -> ! {
             continue;
         }
 
-        let morse_char = get_morse_char(time_since_change);
         last_input = input_active;
+        if input_active {
+            time_since_change = 0;
+            continue;
+        }
+
+        let morse_char = get_morse_char(time_since_change);
         time_since_change = 0;
+
+        match morse_char {
+            None => chars = Default::default(),
+            Some(ch) => {
+                let mut index: usize = 0;
+                while matches!(&chars[index], Some(_x)) {
+                    index += 1;
+                }
+                chars[index] = Some(ch);
+            }
+        }
+
+        let _ = ufmt::uwrite!(&mut _serial, "Letter: ");
+        for ch in chars.iter() {
+            match ch {
+                Some(MorseCharacters::Dot) => {
+                    let _ = ufmt::uwrite!(&mut _serial, ".");
+                }
+                Some(MorseCharacters::Dash) => {
+                    let _ = ufmt::uwrite!(&mut _serial, "-");
+                }
+                None => {}
+            }
+        }
+        let _ = ufmt::uwriteln!(&mut _serial, "");
     }
 }
 
