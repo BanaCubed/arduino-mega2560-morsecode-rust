@@ -9,9 +9,11 @@ use panic_halt as _;
 /// The `MorseCharacters` type.
 ///
 /// Contains valid characters morse code can contain.
+#[derive(PartialEq)]
 enum MorseCharacters {
     Dot,
     Dash,
+    Space,
 }
 
 #[hal::entry]
@@ -55,13 +57,19 @@ fn main() -> ! {
         time_since_change = 0;
 
         match morse_char {
-            None => chars = Default::default(),
+            None => {
+                continue;
+            }
             Some(ch) => {
-                let mut index: usize = 0;
-                while matches!(&chars[index], Some(_x)) {
-                    index += 1;
+                if matches!(ch, MorseCharacters::Space) {
+                    chars = Default::default();
+                } else {
+                    let mut index: usize = 0;
+                    while matches!(&chars[index], Some(_x)) {
+                        index += 1;
+                    }
+                    chars[index] = Some(ch);
                 }
-                chars[index] = Some(ch);
             }
         }
 
@@ -74,7 +82,7 @@ fn main() -> ! {
                 Some(MorseCharacters::Dash) => {
                     let _ = ufmt::uwrite!(&mut _serial, "-");
                 }
-                None => {}
+                _ => {}
             }
         }
         let _ = ufmt::uwriteln!(&mut _serial, "");
@@ -85,11 +93,13 @@ fn main() -> ! {
 ///
 /// Returns None if the duration of time is longer than a dash.
 fn get_morse_char(time: u16) -> Option<MorseCharacters> {
-    if time < 250 {
-        return Some(MorseCharacters::Dot);
-    } else if time < 2500 {
-        return Some(MorseCharacters::Dash);
+    if time < 30 {
+        None
+    } else if time < 200 {
+        Some(MorseCharacters::Dot)
+    } else if time < 1000 {
+        Some(MorseCharacters::Dash)
     } else {
-        return None;
+        Some(MorseCharacters::Space)
     }
 }
