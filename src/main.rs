@@ -19,8 +19,8 @@ enum MorseCharacters {
 #[hal::entry]
 fn main() -> ! {
     let dp = hal::Peripherals::take().unwrap();
-    let pins: hal::Pins = hal::pins!(dp);
-    let mut _serial = arduino_hal::default_serial!(dp, pins, 57600);
+    let pins = hal::pins!(dp);
+    let mut serial = arduino_hal::default_serial!(dp, pins, 57600);
     let mut adc = hal::Adc::new(dp.ADC, Default::default());
 
     let input_pin = pins.a0.into_analog_input(&mut adc);
@@ -73,19 +73,22 @@ fn main() -> ! {
             }
         }
 
-        let _ = ufmt::uwrite!(&mut _serial, "Letter: ");
+        // I've tried splitting this into a seperate function but:
+        // 1. I cannot get `serial` to have the right type annotation.
+        // 2. Due to the lack of the standard library, I cannot use `String`s.
+        let _ = ufmt::uwrite!(&mut serial, "Letter: ");
         for ch in chars.iter() {
             match ch {
                 Some(MorseCharacters::Dot) => {
-                    let _ = ufmt::uwrite!(&mut _serial, ".");
+                    let _ = ufmt::uwrite!(&mut serial, ".");
                 }
                 Some(MorseCharacters::Dash) => {
-                    let _ = ufmt::uwrite!(&mut _serial, "-");
+                    let _ = ufmt::uwrite!(&mut serial, "-");
                 }
                 _ => {}
             }
         }
-        let _ = ufmt::uwriteln!(&mut _serial, "");
+        let _ = ufmt::uwriteln!(&mut serial, "");
     }
 }
 

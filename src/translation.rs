@@ -531,6 +531,7 @@ pub fn check_possibility(val: &[Option<MorseCharacters>; 8]) -> bool {
                 matches = false;
                 break;
             }
+
             matches = matches && (character[i] == val[i]);
             i += 1;
         }
