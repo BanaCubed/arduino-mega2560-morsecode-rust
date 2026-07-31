@@ -45,16 +45,6 @@ const MAX_DOT_LENGTH: u32 = 200;
 /// Acts as the maximum length for a dash.
 const MAX_DASH_LENGTH: u32 = 1000;
 
-/// The `MorseCharacters` type.
-///
-/// Contains valid characters morse code can contain.
-#[derive(PartialEq)]
-enum MorseCharacters {
-    Dot,
-    Dash,
-    Space,
-}
-
 #[hal::entry]
 fn main() -> ! {
     let dp = hal::Peripherals::take().unwrap();
@@ -72,7 +62,7 @@ fn main() -> ! {
     // Stores up to 8 morse code characters.
     // Gets cleared when a valid character is inputted or the length goes past the maximum.
     // In practice 8 slots is more than enough.
-    let mut chars: [Option<MorseCharacters>; 8] = Default::default();
+    let mut chars: [Option<translation::MorseCharacters>; 8] = Default::default();
 
     loop {
         let input_active = adc.read_blocking(&input_pin) <= INPUT_BLOCKING_THRESHOLD;
@@ -100,7 +90,7 @@ fn main() -> ! {
                 continue;
             }
             Some(ch) => {
-                if matches!(ch, MorseCharacters::Space) {
+                if matches!(ch, translation::MorseCharacters::Space) {
                     chars = Default::default();
                 } else {
                     let mut index: usize = 0;
@@ -118,10 +108,10 @@ fn main() -> ! {
         let _ = ufmt::uwrite!(&mut serial, "Letter: ");
         for ch in chars.iter() {
             match ch {
-                Some(MorseCharacters::Dot) => {
+                Some(translation::MorseCharacters::Dot) => {
                     let _ = ufmt::uwrite!(&mut serial, ".");
                 }
-                Some(MorseCharacters::Dash) => {
+                Some(translation::MorseCharacters::Dash) => {
                     let _ = ufmt::uwrite!(&mut serial, "-");
                 }
                 _ => {}
@@ -134,14 +124,14 @@ fn main() -> ! {
 /// Get the morse code character from a given duration of time.
 ///
 /// Returns None if the duration of time is longer than a dash.
-fn get_morse_char(time: u32) -> Option<MorseCharacters> {
+fn get_morse_char(time: u32) -> Option<translation::MorseCharacters> {
     if time < MIN_INPUT_LENGTH {
         None
     } else if time < MAX_DOT_LENGTH {
-        Some(MorseCharacters::Dot)
+        Some(translation::MorseCharacters::Dot)
     } else if time < MAX_DASH_LENGTH {
-        Some(MorseCharacters::Dash)
+        Some(translation::MorseCharacters::Dash)
     } else {
-        Some(MorseCharacters::Space)
+        Some(translation::MorseCharacters::Space)
     }
 }

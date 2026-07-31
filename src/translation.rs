@@ -1,7 +1,15 @@
 //! Module containing utilities for converting the array of morse code
 //! characters into a usable latin alphabet character.
 
-use crate::MorseCharacters;
+/// The `MorseCharacters` type.
+///
+/// Contains valid characters morse code can contain.
+#[derive(PartialEq)]
+pub enum MorseCharacters {
+    Dot,
+    Dash,
+    Space,
+}
 
 /// Constant array of all possible morse code characters.
 ///
