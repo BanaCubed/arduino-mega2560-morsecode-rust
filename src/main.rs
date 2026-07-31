@@ -26,6 +26,7 @@ fn main() -> ! {
     let input_pin = pins.a0.into_analog_input(&mut adc);
     // Measured in ms.
     // More precision than ms should not be required.
+    // Only concern is if nothing happens for over a minute issues may arise.
     let mut time_since_change: u16 = 0;
     let mut last_input = false;
 
@@ -36,14 +37,13 @@ fn main() -> ! {
 
     loop {
         let input_active = adc.read_blocking(&input_pin) <= 10;
-        // I assume that the time to execute code is negligible, which it won't be.
+        // I assume that the time to execute code is negligible, even though it likely won't be.
         // This avoids the need to actually track time, and still should keep enough accuracy to be usable.
         hal::delay_ms(10);
 
         // Timing updates.
         if last_input == input_active {
             time_since_change += 10;
-            // Skips to next iteration, since nothing needs to be done.
             continue;
         }
 
