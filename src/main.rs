@@ -28,6 +28,7 @@ const POLL_DURATION: u32 = 10;
 const INPUT_BLOCKING_THRESHOLD: u16 = 10;
 
 /// The minimum time the button must be held down to count as an input.
+///
 /// This solves the issue of push buttons "flickering" when being pressed or
 /// unpressed.
 ///
@@ -44,6 +45,34 @@ const MAX_DOT_LENGTH: u32 = 200;
 ///
 /// Acts as the maximum length for a dash.
 const MAX_DASH_LENGTH: u32 = 1000;
+
+/// Prints a line to the serial.
+///
+/// Has no return type since the lack of standard library with [arduino_hal]
+/// removes access to `String`s.
+///
+/// Abstract types are so confusing.
+fn print_to_serial<W>(
+    serial: &mut W,
+    morse: &[Option<translation::MorseCharacters>],
+    ch: Option<char>,
+) where
+    W: ufmt::uWrite,
+{
+    let _ = ufmt::uwrite!(serial, "{}: " match ch { None => {'#'}, Some(x) => {x} });
+    for ch in morse.iter() {
+        match ch {
+            Some(translation::MorseCharacters::Dot) => {
+                let _ = ufmt::uwrite!(serial, ".");
+            }
+            Some(translation::MorseCharacters::Dash) => {
+                let _ = ufmt::uwrite!(serial, "-");
+            }
+            _ => {}
+        }
+    }
+    let _ = ufmt::uwriteln!(serial, "");
+}
 
 #[hal::entry]
 fn main() -> ! {
@@ -66,8 +95,11 @@ fn main() -> ! {
 
     loop {
         let input_active = adc.read_blocking(&input_pin) <= INPUT_BLOCKING_THRESHOLD;
-        // I assume that the time to execute code is negligible, even though it likely won't be.
-        // This avoids the need to actually track time, and still should keep enough accuracy to be usable.
+        // I assume that the time to execute code is negligible, even though it
+        // likely won't be. This avoids the need to actually track time, and
+        // still should keep enough accuracy to be usable. In the event that
+        // the execution time becomes problematic, increasing `POLL_DURATION`
+        // should help.
         hal::delay_ms(POLL_DURATION);
 
         // Timing updates.
@@ -90,9 +122,7 @@ fn main() -> ! {
                 continue;
             }
             Some(ch) => {
-                if matches!(ch, translation::MorseCharacters::Space) {
-                    chars = Default::default();
-                } else {
+                if !matches!(ch, translation::MorseCharacters::Space) {
                     let mut index: usize = 0;
                     while matches!(&chars[index], Some(_x)) {
                         index += 1;
@@ -102,22 +132,7 @@ fn main() -> ! {
             }
         }
 
-        // I've tried splitting this into a seperate function but:
-        // 1. I cannot get `serial` to have the right type annotation.
-        // 2. Due to the lack of the standard library, I cannot use `String`s.
-        let _ = ufmt::uwrite!(&mut serial, "Letter: ");
-        for ch in chars.iter() {
-            match ch {
-                Some(translation::MorseCharacters::Dot) => {
-                    let _ = ufmt::uwrite!(&mut serial, ".");
-                }
-                Some(translation::MorseCharacters::Dash) => {
-                    let _ = ufmt::uwrite!(&mut serial, "-");
-                }
-                _ => {}
-            }
-        }
-        let _ = ufmt::uwriteln!(&mut serial, "");
+        print_to_serial(&mut serial, &chars, translation::get_character(&chars));
     }
 }
 

@@ -524,7 +524,7 @@ pub const CHARACTERS: [([Option<MorseCharacters>; 8], char); 36] = [
 ];
 
 /// Checks if a given value is capable of becoming any output in morse code.
-pub fn check_possibility(morse: &[Option<MorseCharacters>; 8]) -> bool {
+pub fn check_possibility(morse: &[Option<MorseCharacters>]) -> bool {
     for (code, _ch) in CHARACTERS {
         let mut i: usize = 0;
         let mut matches = true;
@@ -551,19 +551,14 @@ pub fn check_possibility(morse: &[Option<MorseCharacters>; 8]) -> bool {
     return false;
 }
 
-pub fn get_character(morse: &[Option<MorseCharacters>; 8]) -> Option<char> {
+pub fn get_character(morse: &[Option<MorseCharacters>]) -> Option<char> {
     for (code, ch) in CHARACTERS {
         let mut i: usize = 0;
         let mut matches = true;
 
         while i < 8 {
             if morse[i] == None {
-                break;
-            }
-            if code[i] == None {
-                // This is only reached if val is longer than character,
-                // which makes any matches impossible.
-                matches = false;
+                matches = matches && code[i] == None;
                 break;
             }
 
