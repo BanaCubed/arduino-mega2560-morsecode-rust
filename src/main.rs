@@ -6,10 +6,10 @@ mod translation;
 use arduino_hal::{self as hal};
 use panic_halt as _;
 
-/// The frequency of the baudrate clock.
+/// The frequency of something?
 ///
-/// I don't fully understand how this works, given that it is the default given
-/// by arduino_hal.
+/// I don't fully understand how this works, this number and its use were both
+/// part of [arduino_hal] example code.
 const BAUDRATE: u32 = 57600;
 
 /// Time in milliseconds between input polling.
@@ -20,7 +20,7 @@ const BAUDRATE: u32 = 57600;
 /// Can be increased if inputs get voided.
 const POLL_DURATION: u32 = 10;
 
-/// Cuttof value for `adc.read_blocking()` below which the button is treated as
+/// Cutoff value for `adc.read_blocking()` below which the button is treated as
 /// pressed.
 ///
 /// If this is set too high, the button may be considered pressed when it
@@ -49,7 +49,8 @@ const MAX_DASH_LENGTH: u32 = 1000;
 /// Prints a line to the serial.
 ///
 /// Has no return type since the lack of standard library with [arduino_hal]
-/// removes access to `String`s.
+/// removes access to `String`s. This is also the reason behind needing serial
+/// to be passed in.
 ///
 /// Abstract types are so confusing.
 fn print_to_serial<W>(
@@ -128,6 +129,12 @@ fn main() -> ! {
             time_since_change = 0;
             continue;
         }
+        // At about here there should be something like:
+        // if time_since_change > AUTO_SUBMIT_DELAY {
+        //     print_to_serial(...);
+        //     chars = Default::default();
+        //     continue;
+        // }
 
         let morse_char = get_morse_char(time_since_change);
         time_since_change = 0;
@@ -146,6 +153,12 @@ fn main() -> ! {
                 }
             }
         }
+        // At about here there should be something like:
+        // if translation::check_possibility || matches!(morse_char, Some(translation::MorseCharacters::Space)) {
+        //     print_to_serial(...);
+        //     chars = Default::default();
+        //     continue;
+        // }
 
         print_to_serial(&mut serial, &chars, translation::get_character(&chars));
     }
