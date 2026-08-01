@@ -74,6 +74,21 @@ fn print_to_serial<W>(
     let _ = ufmt::uwriteln!(serial, "");
 }
 
+/// Get the morse code character from a given duration of time.
+///
+/// Returns None if the duration of time is longer than a dash.
+fn get_morse_char(time: u32) -> Option<translation::MorseCharacters> {
+    if time < MIN_INPUT_LENGTH {
+        None
+    } else if time < MAX_DOT_LENGTH {
+        Some(translation::MorseCharacters::Dot)
+    } else if time < MAX_DASH_LENGTH {
+        Some(translation::MorseCharacters::Dash)
+    } else {
+        Some(translation::MorseCharacters::Space)
+    }
+}
+
 #[hal::entry]
 fn main() -> ! {
     let dp = hal::Peripherals::take().unwrap();
@@ -133,20 +148,5 @@ fn main() -> ! {
         }
 
         print_to_serial(&mut serial, &chars, translation::get_character(&chars));
-    }
-}
-
-/// Get the morse code character from a given duration of time.
-///
-/// Returns None if the duration of time is longer than a dash.
-fn get_morse_char(time: u32) -> Option<translation::MorseCharacters> {
-    if time < MIN_INPUT_LENGTH {
-        None
-    } else if time < MAX_DOT_LENGTH {
-        Some(translation::MorseCharacters::Dot)
-    } else if time < MAX_DASH_LENGTH {
-        Some(translation::MorseCharacters::Dash)
-    } else {
-        Some(translation::MorseCharacters::Space)
     }
 }
