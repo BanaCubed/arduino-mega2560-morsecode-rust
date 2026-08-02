@@ -103,7 +103,7 @@ fn main() -> ! {
     let input_pin = pins.a0.into_analog_input(&mut adc);
     // Measured in ms.
     // More precision than ms should not be required.
-    // Only concern is if nothing happens for over a minute issues may arise.
+    // Only concern is if nothing happens for over 49 days issues may arise.
     let mut time_since_change: u32 = 0;
     let mut last_input = false;
 
