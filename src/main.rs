@@ -46,6 +46,9 @@ const MAX_DOT_LENGTH: u32 = 200;
 /// Acts as the maximum length for a dash.
 const MAX_DASH_LENGTH: u32 = 1000;
 
+/// The amount of inactive time to count as an automatic submission.
+const AUTO_SUBMIT_DELAY: u32 = 1000;
+
 /// Prints a line to the serial.
 ///
 /// Has no return type since the lack of standard library with [arduino_hal]
@@ -121,6 +124,11 @@ fn main() -> ! {
         // Timing updates.
         if last_input == input_active {
             time_since_change += POLL_DURATION;
+            if time_since_change > AUTO_SUBMIT_DELAY && !input_active && matches!(chars[0], None) {
+                print_to_serial(&mut serial, &chars, translation::get_character(&chars));
+                chars = Default::default();
+                continue;
+            }
             continue;
         }
 
@@ -129,12 +137,6 @@ fn main() -> ! {
             time_since_change = 0;
             continue;
         }
-        // At about here there should be something like:
-        // if time_since_change > AUTO_SUBMIT_DELAY {
-        //     print_to_serial(...);
-        //     chars = Default::default();
-        //     continue;
-        // }
 
         let morse_char = get_morse_char(time_since_change);
         time_since_change = 0;
@@ -153,12 +155,13 @@ fn main() -> ! {
                 }
             }
         }
-        // At about here there should be something like:
-        // if translation::check_possibility || matches!(morse_char, Some(translation::MorseCharacters::Space)) {
-        //     print_to_serial(...);
-        //     chars = Default::default();
-        //     continue;
-        // }
+        if !translation::check_possibility(&chars)
+            || matches!(&morse_char, Some(translation::MorseCharacters::Space))
+        {
+            print_to_serial(&mut serial, &chars, translation::get_character(&chars));
+            chars = Default::default();
+            continue;
+        }
 
         print_to_serial(&mut serial, &chars, translation::get_character(&chars));
     }

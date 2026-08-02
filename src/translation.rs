@@ -4,7 +4,7 @@
 /// The `MorseCharacters` type.
 ///
 /// Contains valid characters morse code can contain.
-#[derive(PartialEq)]
+#[derive(PartialEq, Clone, Copy)]
 pub enum MorseCharacters {
     Dot,
     Dash,
