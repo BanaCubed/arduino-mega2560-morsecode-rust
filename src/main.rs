@@ -124,7 +124,7 @@ fn main() -> ! {
         // Timing updates.
         if last_input == input_active {
             time_since_change += POLL_DURATION;
-            if time_since_change > AUTO_SUBMIT_DELAY && !input_active && matches!(chars[0], None) {
+            if time_since_change > AUTO_SUBMIT_DELAY && !input_active && !matches!(chars[0], None) {
                 print_to_serial(&mut serial, &chars, translation::get_character(&chars));
                 chars = Default::default();
                 continue;
@@ -162,7 +162,5 @@ fn main() -> ! {
             chars = Default::default();
             continue;
         }
-
-        print_to_serial(&mut serial, &chars, translation::get_character(&chars));
     }
 }
